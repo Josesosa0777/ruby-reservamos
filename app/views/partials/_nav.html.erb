@@ -1,0 +1,17 @@
+<nav class='navbar navbar-expand-lg fixed-top navbar-dark' style="background-color: purple;">
+    <div class="navbar-nav">
+    <%= link_to root_path do %>
+        <%= image_tag("https://assets-fl.reservamos.mx/assets/logo-b09feb00a641615eb083fedea266d68ed48e1e46687e198437b7a1aab251860d.svg", :alt => "bus", class:"pt-1") %>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <%= link_to 'Home', root_path, class: "nav-link active" %>
+            <%= link_to 'People', people_path, class: "nav-link active" %>
+            <%= link_to 'New Person', new_people_path, class: "nav-link active" %>
+        </div>
+    </div>
+    </div>
+</nav>

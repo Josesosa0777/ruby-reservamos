@@ -1,0 +1,25 @@
+<%= form_with(model: @person, local: true) do |form| %>
+    <div class="field">
+        <%=form.label :name %>
+        <%=form.text_field :name %>
+    </div>
+    <div class="field">
+        <%=form.label :category %>
+        <%=form.text_field :category %>
+    </div>
+    <div class="field">
+        <%=form.label :email %>
+        <%=form.text_field :email %>
+    </div>
+    <div class="field">
+        <%=form.label :area %>
+        <%=form.text_field :area %>
+    </div>
+    <div class="field">
+        <%=form.label :leader %>
+        <%=form.text_field :leader %>
+    </div>
+    <div class="mt-3">
+        <%=form.submit %>
+    </div>
+<% end %>
