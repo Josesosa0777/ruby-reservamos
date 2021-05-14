@@ -11,10 +11,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%# <%= image_tag("images/bus.png", :alt => "bus") %> 
     <%= favicon_link_tag 'images/bus.png' %> 
-    <%= render 'partials/nav' %>
+    
   </head>
 
   <body class="mt-5">
+    <% if notice %>
+      <p class="alert alert-primary"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    <%= render 'partials/nav' %>
     <%= yield %>
   </body>
 </html>
