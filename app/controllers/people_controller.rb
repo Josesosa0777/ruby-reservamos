@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-    before_action :find_person, except: [:new, :create, :index, :from_author]
+    before_action :find_person, except: [:new, :create, :index, :from_author, :start_evaluation]
     before_action :authenticate_user!, only: [:new, :index, :create, :edit, :update, :destroy]
 
     def new
@@ -22,12 +22,14 @@ class PeopleController < ApplicationController
     end
     def update
         @person.update(person_params)
-        redirect_to @person
+        # redirect_to @person
+        redirect_to people_path
     end    
     def destroy
         @person = Person.find(params[:id])
         @person.destroy
-        redirect_to root_path
+        # redirect_to root_path
+        redirect_to people_path
     end
     def find_person
         @person = Person.find(params[:id])
@@ -40,5 +42,8 @@ class PeopleController < ApplicationController
     end    
     def person_params
         params.require(:person).permit(:name, :category, :email, :area, :leader)
-    end    
+    end
+    def start_evaluation
+        @people = Person.all
+    end
 end

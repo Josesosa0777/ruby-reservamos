@@ -18,8 +18,12 @@
         <p> Added by: <strong><%= @person.user.email %></strong></p>
     </div>
 
-    <div>
-    <%= link_to 'Delete the person', @person, method: :delete %>
+    <div class="mb-3">
+    <%= link_to 'Edit person', edit_person_path(@person), class: 'btn btn-primary mr-2 my-2 my-sm-0' %>
     </div>
+    <div>
+    <%= link_to 'Delete person', @person, method: :delete, class: 'btn btn-primary mr-2 my-2 my-sm-0' %>
+    </div>
+    
 </div>
 

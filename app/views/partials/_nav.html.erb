@@ -1,25 +1,34 @@
-<nav class='navbar navbar-expand-lg fixed-top navbar-dark' style="background-color: purple;">
-    <div class="navbar-nav">
-    <%= link_to root_path do %>
-        <%= image_tag("https://assets-fl.reservamos.mx/assets/logo-b09feb00a641615eb083fedea266d68ed48e1e46687e198437b7a1aab251860d.svg", :alt => "bus", class:"pt-1") %>
-    <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <%= link_to 'Home', root_path, class: "nav-link active" %>
-            <%= link_to 'People', people_path, class: "nav-link active" %>
-            <% if user_signed_in? && current_user.email=='edith@reservamos.mx' %>
-                <%= link_to 'New Person', new_person_path, class: "nav-link active" %>
+<nav class="navbar navbar-default navbar-expand-lg fixed-top navbar-dark" style="background-color: purple;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggler collapsed" 
+            data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <%= link_to root_path, class: "navbar-brand", id: "logo" do %>
+                <%= image_tag("https://assets-fl.reservamos.mx/assets/logo-b09feb00a641615eb083fedea266d68ed48e1e46687e198437b7a1aab251860d.svg", :alt => "bus", class:"pt-1") %>
             <% end %>
-            <% if user_signed_in? %>
-                <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link active' %>
-            <% else %>
-                <%= link_to 'Log in', new_user_session_path, class: 'nav-link active' %>
-                <%= link_to 'Register', new_user_registration_path, class: 'nav-link active' %>
-            <% end %>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><%= link_to 'Home', root_path, class: "nav-link active" %></li>
+                <li><%= link_to 'Start Evaluation', start_evaluation_path, class: "nav-link active" %></li>
+                <li><%= link_to 'People', people_path, class: "nav-link active" %></li>
+                <% if user_signed_in? && current_user.email=='edith@reservamos.mx' %>
+                    <li><%= link_to 'New Person', new_person_path, class: "nav-link active" %></li>
+                <% end %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <% if user_signed_in? %>
+                    <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-primary nav-link active' %>
+                <% else %>
+                    <%= link_to 'Log in', new_user_session_path, class: 'btn btn-success mr-2 my-2 my-sm-0' %>
+                    <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary mr-2 my-2 my-sm-0' %>
+                <% end %>
+            </ul>
         </div>
     </div>
-    </div>
 </nav>
+
+
+
