@@ -10,7 +10,9 @@
         <div class="navbar-nav">
             <%= link_to 'Home', root_path, class: "nav-link active" %>
             <%= link_to 'People', people_path, class: "nav-link active" %>
-            <%= link_to 'New Person', new_people_path, class: "nav-link active" %>
+            <% if user_signed_in? && current_user.email=='edith@reservamos.mx' %>
+                <%= link_to 'New Person', new_person_path, class: "nav-link active" %>
+            <% end %>
             <% if user_signed_in? %>
                 <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link active' %>
             <% else %>

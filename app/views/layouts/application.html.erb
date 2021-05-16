@@ -21,7 +21,9 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    <%= render 'partials/nav' %>
-    <%= yield %>
+    <div class="pb-3">
+      <%= render 'partials/nav' %>
+    </div>
+      <%= yield %>
   </body>
 </html>

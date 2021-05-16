@@ -1,13 +1,17 @@
 class PeopleController < ApplicationController
-    before_action :find_person, except: [:new, :create, :index]
-    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    before_action :find_person, except: [:new, :create, :index, :from_author]
+    before_action :authenticate_user!, only: [:new, :index, :create, :edit, :update, :destroy]
 
     def new
-        @person = Person.new
+        if current_user.email=='edith@reservamos.mx'
+            @person = Person.new
+            @newline = "que tal"
+        end
     end
     def create
-        @people = Person.create(name: params[:person][:name], category: params[:person][:category], email: params[:person][:email], area: params[:person][:area], leader: params[:person][:leader])
-    render json: @people
+        @person = current_user.people.create(person_params)
+        # render json: @people
+        redirect_to @person
     end
     def show
         @person = Person.find(params[:id])
@@ -17,10 +21,9 @@ class PeopleController < ApplicationController
         puts "\n\n\n #{@person.persisted?} \n\n\n"
     end
     def update
-        @person = Person.find(params[:id])
-        @person.update(name: params[:person][:name], category: params[:person][:category], email: params[:person][:email], area: params[:person][:area], leader: params[:person][:leader])
+        @person.update(person_params)
         redirect_to @person
-    end
+    end    
     def destroy
         @person = Person.find(params[:id])
         @person.destroy
@@ -32,4 +35,10 @@ class PeopleController < ApplicationController
     def index
         @people = Person.all
     end
+    def from_author
+        @user = User.find(params[:user_id])
+    end    
+    def person_params
+        params.require(:person).permit(:name, :category, :email, :area, :leader)
+    end    
 end
