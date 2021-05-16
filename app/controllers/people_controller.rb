@@ -3,10 +3,10 @@ class PeopleController < ApplicationController
     before_action :authenticate_user!, only: [:new, :index, :create, :edit, :update, :destroy]
 
     def new
-        if current_user.email=='edith@reservamos.mx'
+        # if current_user.email=='edith@reservamos.mx'
             @person = Person.new
             @newline = "que tal"
-        end
+        # end
     end
     def create
         @person = current_user.people.create(person_params)
