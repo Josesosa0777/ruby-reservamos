@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
     before_action :find_person, except: [:new, :create, :index, :from_author, :start_evaluation]
-    before_action :authenticate_user!, only: [:new, :index, :create, :edit, :update, :destroy]
+    before_action :authenticate_user!, only: [:new, :index, :create, :edit, :update, :destroy, :start_evaluation]
 
     def new
         # if current_user.email=='edith@reservamos.mx'
