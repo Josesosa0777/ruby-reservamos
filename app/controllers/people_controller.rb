@@ -156,10 +156,11 @@ class PeopleController < ApplicationController
         params.require(:person).permit(:name, :category, :email, :area, :leader)
     end
     def start_evaluation
-        print(request.method)
+        # print(request.method)
         if request.method == "POST"
             print("METHOD")
-            print(request.method)
+            print(params)
+            # @name_evaluated = params[:name_person]
         end
         @people = Person.all
         # Get current user:
@@ -195,9 +196,8 @@ class PeopleController < ApplicationController
     end
 
     def evaluation
-        print(request.method)
+        # print(request.method)
         if request.method == "POST"
-            print("POSTING JOSE")
             # print(@@question_operation)
             @questions_strategist = @@question_strategist
             @questions_strategist_engineer = @@question_strategist_engineer
@@ -224,7 +224,5 @@ class PeopleController < ApplicationController
             end
         end
     end
-
 end
-
 
