@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   # get 'people/new', to: 'people#new', as: :new_people
   get 'people/user/:user_id', to: 'people#from_author'
   get 'start_evaluation', to: 'people#start_evaluation'
+  post 'start_evaluation', to: 'people#start_evaluation'
+  post 'evaluation', to: 'people#evaluation'
+  post 'questions_evaluation', to: 'people#questions_evaluation'
 end

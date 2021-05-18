@@ -1,18 +1,18 @@
 <div class="container mt-5">
     <% if true %>
-      <h4 class="questions-title">Hola <%=current_user.email%>. Las siguientes preguntas están divididas en categorías que ayudan a evaluar el
+      <h4 class="questions-title">Hola <%=@name_evaluator%>. Las siguientes preguntas están divididas en categorías que ayudan a evaluar el
         performance del equipo de Reservamos. </h4>
     <% else %>
       <h4 class="questions-title">Hola <%=current_user.email%>. Las siguientes preguntas están divididas en categorías que ayudan a evaluar el
         performance del equipo de Reservamos. </h4>
     <% end %>
     <div class='container d-flex justify-content-center text-center'>
-    <form action="{% url 'evaluation' %}" method="POST" class="form-signin mt-3 col-6 register-login-input">
+    <form action="evaluation" method="POST" class="form-signin mt-3 col-6 register-login-input">
         <fieldset>
         <legend>Choose a person to start the evaluation</legend>
             <!-- <select class="form-control form-control-sm" name="name_person" id="name-select" onchange="javascript:this.form.submit()" required> -->
-            
-            <select class="form-control form-control-sm" name="name_person" id="name-select" required>
+            <!-- <select class="form-control form-control-sm" name="name_person" id="name-select" onchange= "alert('hello')" required> -->
+            <select class="form-control form-control-sm" name="name_person" id="name-select" onchange= "javascript:this.form.submit()" required>
             <option value=""> -- Please choose an option -- </option>
             <% @people.each do |individual| %>
             <option value="<%= individual.name %>"><%= individual.name %></option>

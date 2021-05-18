@@ -1,0 +1,155 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#name-person").hide()
+  });
+</script>
+  
+<div class="container mt-5 mb-5">
+    <% if @name_evaluator %>
+    <h3 class="text-center mb-4">Evaluación de <%=@name_evaluated%>, por <%=@name_evaluator%> </h3>
+    <% else %>
+    <h3 class="text-center mb-4">Evaluación de <%=@name_evaluated%>, por <%=current_user.email%> </h3>
+    <% end %>
+    <h4>Las siguientes preguntas están divididas en categorías que ayudan a evaluar el
+performance del equipo de Reservamos.</h4>
+    <div class='container d-flex justify-content-center'>
+    <form action="start_evaluation" method="POST" class="form-signin mt-3 col-6 register-login-input">
+        <fieldset>
+            <% if @personArea == "engineer" %>
+                <% if @personCategory == "Operation" %>
+                    <% @questions_operation_engineer.each do |question| %>
+                        <%= render 'questions', {question: question} %>
+                    <% end %>
+                    <br>
+                <% end %>
+                <% if @personCategory == "Strategist" %>
+                    <% @questions_strategist_engineer.each do |question| %>
+                        <%= render 'questions', {question: question} %>
+                    <% end %>
+                    <br>
+                <% end %>
+                <% if @personCategory == "Direction" %>
+                    <% @questions_management_engineer.each do |question| %>
+                        <%= render 'questions', {question: question} %>
+                    <% end %>
+                    <br>
+                <% end %>
+                <% if @name_evaluator == @personLeader  %>
+                    <div class="mt-2">
+                        <h5>Evaluación por Ciclos</h5>
+                        <p> Si eres líder de equipo ingresa la evaluación de cada ciclo hasta la fecha de la persona evaluada.
+                        Si el ciclo no ha sido evaluado deja <b>vacío</b> el espacio.
+                        </p>
+                        <table>
+                            <tr class="container row justify-content-around">
+                                <td class="col-5">
+                                <label for="C1">C1:</label>
+                                <input class="col-8" type="number" step="any" id="C1" name="C1" placeholder="--" required>%
+                                </td>
+                                <td class="col-5"><label for="C2">C2:</label>
+                                <input class="col-8" type="number" step="any" id="C2" name="C2" placeholder="--" required>%
+                                </td>
+                                <td class="col-5"><label for="C3">C3:</label>
+                                <input class="col-8" type="number" step="any" id="C3" name="C3" placeholder="--" required>%
+                                </td>
+                                <td class="col-5"><label for="C4">C4:</label>
+                                <input class="col-8" type="number" step="any" id="C4" name="C4" placeholder="--" required>%
+                                </td>
+                            </tr>
+                            <tr class="container row justify-content-around">
+                                <td class="col-5"><label for="C5">C5:</label>
+                                <input class="col-8" type="number" step="any" id="C5" name="C5" placeholder="--">%
+                                </td>
+                                <td class="col-5"><label for="C6">C6:</label>
+                                <input class="col-8" type="number" step="any" id="C6" name="C6" placeholder="--">%<br>
+                                </td>
+                                <td class="col-5"><label for="C7">C7:</label>
+                                <input class="col-8" type="number" step="any" id="C7" name="C7" placeholder="--">%<br>
+                                </td>
+                                <td class="col-5"><label for="C8">C8:</label>
+                                <input class="col-8" type="number" step="any" id="C8" name="C8" placeholder="--">%
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="mt-4">
+                        <h5>Feedback para la persona evaluada </h5>
+                        <div class="mb-3">
+                            <label for="comment_1" class="form-label">Logros más destacados</label>
+                            <textarea class="form-control form-control-sm" rows="3" name="comment_1" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comment_1" class="form-label">Recomendaciones</label>
+                            <textarea class="form-control form-control-sm" rows="3" name="comment_2" required></textarea>
+                        </div>
+                    </div>
+                <% end %>
+            
+            <% elsif @personArea != "engineer" %>
+                <% if @personCategory == "Operation" %>
+                    <% @questions_operation.each do |question| %>
+                        <%= render 'questions', {question: question} %>
+                    <% end %>
+                    <br>
+                <% end %>
+                <% if @personCategory == "Strategist" %>
+                    <% @questions_strategist.each do |question| %>
+                        <%= render 'questions', {question: question} %>
+                    <% end %>
+                    <br>
+                <% end %>
+                <% if @personCategory == "Direction" %>
+                    <% @questions_management.each do |question| %>
+                        <%= render 'questions', {question: question} %>
+                    <% end %>
+                    <br>
+                <% end %>
+                <% if @name_evaluator == @personLeader  %>
+                    <div class="mt-2">
+                        <h5>Evaluación por Q's</h5>
+                        <p> Si eres líder de equipo ingresa la evaluación de cada Q hasta la fecha de la persona evaluada.
+                        Si el Q no ha sido evaluado deja <b>vacío</b> el espacio.
+                        </p>
+                        <table>
+                            <tr class="container row justify-content-around">
+                                <td class="col-6"><label for="Q1">Q1:</label>
+                                <input class="col-8" type="number" step="any" id="Q1" name="Q1" placeholder="--" required>%
+                                </td>
+                                <td class="col-6"><label for="Q2">Q2:</label>
+                                <input class="col-8" type="number" step="any" id="Q2" name="Q2" placeholder="--" required>%
+                                </td>
+                                <td class="col-6"><label for="Q3">Q3:</label>
+                                <input class="col-8" type="number" step="any" id="Q3" name="Q3" placeholder="--">%
+                                </td>
+                                <td class="col-6"><label for="Q4">Q4:</label>
+                                <input class="col-8" type="number" step="any" id="Q4" name="Q4" placeholder="--">%
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="mt-4">
+                        <h5>Feedback para la persona evaluada </h5>
+                        <div class="mb-3">
+                            <label for="comment_1" class="form-label">Logros más destacados</label>
+                            <textarea class="form-control form-control-sm" rows="3" name="comment_1" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comment_1" class="form-label">Recomendaciones</label>
+                            <textarea class="form-control form-control-sm" rows="3" name="comment_2" required></textarea>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+            <div class="text-center mt-4">
+                <button type="submit" class="col-3 btn btn-primary text-center" id="send">Send</button>
+            </div>
+            <div id="name-person">
+                <p> The evaluated person is: </p>
+                <input name="name_person" value="{{name_evaluated}}" selected>
+            </div>
+        </fieldset>
+    </form>
+    </div>
+
+</div>

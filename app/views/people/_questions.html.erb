@@ -1,0 +1,25 @@
+
+<% if question[:id] == 1 || (question[:id]+2) % 3 == 0%>
+    <br>
+    <h4 class="title-category" style="color: #ef4f4f;"> <%=question[:category]%> </h4>
+<% end %>
+<h5 class=""><%= question[:id] %>.- <%= question[:question] %></h5>
+<div class="mb-2 d-flex justify-content-around flex-wrap">
+    <table>
+        <tr class="row justify-content-between">
+            <td class="align-middle col-2 text-center">Totalmente en Desacuerdo</td>
+            <td class="align-middle col-2 text-center">En desacuerdo</td>
+            <td class="align-middle col-2 text-center">Neutro</td>
+            <td class="align-middle col-2 text-center">De acuerdo</td>
+            <td class="align-middle col-2 text-center">Totalmente de acuerdo</td>
+        </tr>
+        <tr class="row justify-content-between">
+            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 0) %></td>
+            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 1) %></td>
+            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 2) %></td>
+            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 3) %></td>
+            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 4) %></td>
+            
+        </tr>
+    </table>
+</div>
