@@ -14,11 +14,17 @@
             <td class="align-middle col-2 text-center">Totalmente de acuerdo</td>
         </tr>
         <tr class="row justify-content-between">
-            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 0) %></td>
-            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 1) %></td>
-            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 2) %></td>
-            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 3) %></td>
-            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 4) %></td>
+            <!-- <td class="col-2 text-center"><input type="radio" id=question[:id].to_s name=<%"a"+question[:id].to_s%> value="0" ></td> -->
+            <!-- <td class="col-2 text-center"><input type="radio" id=question[:id].to_s name=<%"a"+question[:id].to_s%> value="1" ></td> -->
+            <!-- <td class="col-2 text-center"><input type="radio" id=question[:id].to_s name=<%"a"+question[:id].to_s%> value="2" ></td> -->
+            <!-- <td class="col-2 text-center"><input type="radio" id=question[:id].to_s name=<%"a"+question[:id].to_s%> value="3" ></td> -->
+            <!-- <td class="col-2 text-center"><input type="radio" id=question[:id].to_s name=<%"a"+question[:id].to_s%> value="4" ></td> -->
+            
+            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 0) %></td> 
+            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 1) %></td> 
+            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 2, checked = false, required: true) %></td> 
+            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 3) %></td> 
+            <td class="col-2 text-center"><%= radio_button_tag("a"+question[:id].to_s, 4) %></td> 
             
         </tr>
     </table>

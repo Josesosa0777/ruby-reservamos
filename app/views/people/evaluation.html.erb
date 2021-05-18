@@ -38,7 +38,7 @@ performance del equipo de Reservamos.</h4>
                 <% if @name_evaluator == @personLeader  %>
                     <div class="mt-2">
                         <h5>Evaluación por Ciclos</h5>
-                        <p> Si eres líder de equipo ingresa la evaluación de cada ciclo hasta la fecha de la persona evaluada.
+                        <p> Ingresa la evaluación de cada ciclo hasta la fecha de la persona evaluada.
                         Si el ciclo no ha sido evaluado deja <b>vacío</b> el espacio.
                         </p>
                         <table>
@@ -108,7 +108,7 @@ performance del equipo de Reservamos.</h4>
                 <% if @name_evaluator == @personLeader  %>
                     <div class="mt-2">
                         <h5>Evaluación por Q's</h5>
-                        <p> Si eres líder de equipo ingresa la evaluación de cada Q hasta la fecha de la persona evaluada.
+                        <p> Ingresa la evaluación de cada Q hasta la fecha de la persona evaluada.
                         Si el Q no ha sido evaluado deja <b>vacío</b> el espacio.
                         </p>
                         <table>
@@ -146,7 +146,7 @@ performance del equipo de Reservamos.</h4>
             </div>
             <div id="name-person">
                 <p> The evaluated person is: </p>
-                <input name="name_person" value="{{name_evaluated}}" selected>
+                <input name="name_person" value="<%=@name_evaluated%>" selected>
             </div>
         </fieldset>
     </form>
